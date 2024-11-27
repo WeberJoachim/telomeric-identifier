@@ -76,7 +76,7 @@ pub fn plot(matches: &clap::ArgMatches) -> Result<()> {
 #[derive(Debug, Deserialize)]
 pub struct TelomericRepeatRecord {
     pub id: String,
-    pub window: i32,
+    pub window: i64,
     pub forward_repeat_number: i32,
     pub reverse_repeat_number: i32,
     pub telomeric_repeat: String,
