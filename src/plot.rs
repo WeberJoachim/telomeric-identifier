@@ -116,7 +116,7 @@ fn chromosome_number(parsed_tsv: &Vec<TelomericRepeatRecord>, chromosome_cutoff:
             it += 1;
             continue;
         } else {
-            if parsed_tsv[it].window > chromosome_cutoff {
+            if parsed_tsv[it].window > chromosome_cutoff.into() {
                 max_sizes.push(parsed_tsv[it].window);
             }
             it += 1;
@@ -306,7 +306,7 @@ fn generate_plot_data(
             // window (i.e x)
             // forward + reverse counts
             path_vec.push((
-                parsed_tsv[it].window,
+                parsed_tsv[it].window.try_into().unwrap(),
                 parsed_tsv[it].forward_repeat_number + parsed_tsv[it].reverse_repeat_number,
             ));
             it += 1;
@@ -319,7 +319,7 @@ fn generate_plot_data(
             // the path vector for the last element (seems important for things which occur at the
             // ends of chromosomes right..? DOH)
             path_vec.push((
-                parsed_tsv[it].window,
+                parsed_tsv[it].window.try_into().unwrap(),
                 parsed_tsv[it].forward_repeat_number + parsed_tsv[it].reverse_repeat_number,
             ));
             // calculate the svg path element from path_vec here
