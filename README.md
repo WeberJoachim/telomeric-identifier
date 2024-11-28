@@ -1,8 +1,10 @@
 [<img alt="github" src="https://img.shields.io/badge/github-tolkit/tidk-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/tolkit/telomeric-identifier)
-[<img alt="crates.io" src="https://img.shields.io/crates/v/tidk.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/tidk)
-[<img alt="bioconda" src="https://img.shields.io/badge/bioconda-tidk-44A833?style=for-the-badge&labelColor=555555&logo=Anaconda" height="20">](https://bioconda.github.io/recipes/tidk/README.html)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10091385.svg)](https://doi.org/10.5281/zenodo.10091385)
 
+
+# IMPORTANT NOTICE:
+This is a custom fork by me: Joachim Weber 
+This only changes a few data types so large genomes will not fail due to int32 constraints. 
 
 # A Telomere Identification toolKit (`tidk`)
 
@@ -15,19 +17,13 @@
 
 ## Install
 
-The easiest way to install is through conda:
+The easiest way to use is through building the image according to tidk.def file:
 
 ```bash
-conda install -c bioconda tidk
+sudo singularity build --writable-tmpfs tidk.sif tidk.def
 ```
 
-Otherwise...
 
-As with other Rust projects, you will have to complile yourself. <a href="https://www.rust-lang.org/tools/install">Download rust</a>, clone this repo, `cd` into it, and then run:
-
-`cargo install --path=.`
-
-To install into `$PATH` as `tidk`.
 
 ## Usage
 
