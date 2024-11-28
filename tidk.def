@@ -1,0 +1,26 @@
+# Singularity defnition file to create a container image for my custom tidk that is supposed to handle large genomes
+Bootstrap: docker
+From: rust:1.82-slim
+
+%environment
+    export CARGO_HOME=/cargo
+    export RUSTUP_HOME=/rustup
+    export PATH=$CARGO_HOME/bin:$PATH
+
+%post
+    # Install build dependencies
+    apt-get update && apt-get install -y \
+        libssl-dev \
+        pkg-config \
+        build-essential \
+        git-all \
+        && rm -rf /var/lib/apt/lists/*
+
+    git clone https://github.com/WeberJoachim/telomeric-identifier /app
+
+    cd /app
+    cargo install --path=.
+
+
+
+
